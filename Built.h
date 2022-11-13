@@ -40,244 +40,15 @@ public:
     }
 
     // show game match and available choices
-    void show_Ui()
-    {
-        // convert positions to a varble to call them easier
-        char a = p[0][0];
-        char b = p[0][1];
-        char c = p[0][2];
-        char d = p[1][0];
-        char e = p[1][1];
-        char f = p[1][2];
-        char g = p[2][0];
-        char h = p[2][1];
-        char i = p[2][2];
-
-        // convert available choices to a varble to call them easier
-        char j = num_p[0][0];
-        char k = num_p[0][1];
-        char l = num_p[0][2];
-        char m = num_p[1][0];
-        char n = num_p[1][1];
-        char o = num_p[1][2];
-        char p = num_p[2][0];
-        char q = num_p[2][1];
-        char r = num_p[2][2];
-
-        // show them via using format string in c++
-        cout << endl;
-        if (isFinished)
-        {
-            printf("          Final match               Winner moves       \n\n");
-        }
-        else
-            printf("          Game match             Available chioces       \n\n");
-        printf("            |     |                   |     |             \n");
-        printf("         %c  |  %c  |  %c             %c  |  %c  |  %c       \n", a, b, c, j, k, l);
-        printf("        ____|_____|_____          ____|_____|_____        \n");
-        printf("            |     |                   |     |             \n");
-        printf("         %c  |  %c  |  %c     ==>     %c  |  %c  |  %c       \n", d, e, f, m, n, o);
-        printf("        ____|_____|_____          ____|_____|_____        \n");
-        printf("            |     |                   |     |             \n");
-        printf("         %c  |  %c  |  %c             %c  |  %c  |  %c       \n", g, h, i, p, q, r);
-        printf("            |     |                   |     |             \n\n\n");
-
-        if (isFinished)
-        {
-            printf("\033[0m Final resault: ");
-            printf("     \033[33;44m Bot :%i \033[0m    vs    \033[33;44m You :%i ", player_won[0], player_won[1]);
-            printf("\033[0m");
-            // printf("\033[33m");
-        }
-    }
+    void show_Ui();
 
     // check all possible win positions using for loop for coulm and row
-    void check_winner()
-    {
+    void check_winner();
 
-        for (int i = 0; i < 3; i++)
-        {
-            // for loop to check 3 rows
-
-            //  _*_|_*_|_*_
-            //  ___|___|___
-            //     |   |
-            if (p[i][0] == p[i][1] && p[i][1] == p[i][2])
-            {
-                if (p[i][0] != '_')
-                {
-                    // if 3 index are same  (X or O)  isFinished set
-                    // to true to end execute and set winner
-                    isFinished = true;
-                    position1.row = position2.row = position3.row = i;
-                    position1.col = 0;
-                    position2.col = 1;
-                    position3.col = 2;
-                    set_winner(p[i][0]);
-                    break;
-                }
-            }
-
-            // for loop to check 3 coulms
-
-            //  _*_|___|___
-            //  _*_|___|___
-            //   * |   |
-            else if (p[0][i] == p[1][i] && p[1][i] == p[2][i])
-            {
-                if (p[0][i] != '_')
-                {
-                    isFinished = true;
-                    position1.col = position2.col = position3.col = i;
-                    position1.row = 0;
-                    position2.row = 1;
-                    position3.row = 2;
-                    set_winner(p[0][i]);
-                    break;
-                }
-            }
-        }
-
-        // for loop to check orib
-
-        //  _*_|___|___
-        //  ___|_*_|___
-        //     |   | *
-        if (p[0][0] == p[1][1] && p[1][1] == p[2][2])
-        {
-            if (p[0][0] != '_')
-            {
-                isFinished = true;
-                position1.row = position1.col = 0;
-                position2.row = position2.col = 1;
-                position3.row = position3.col = 2;
-                set_winner(p[0][0]);
-            }
-        }
-
-        // for loop to check orib
-
-        //  ___|___|_*_
-        //  ___|_*_|___
-        //   * |   |
-        else if (p[0][2] == p[1][1] && p[1][1] == p[2][0])
-        {
-            if (p[0][2] != '_')
-            {
-                isFinished = true;
-                position1.row = 0;
-                position1.col = 2;
-                position2.row = 1;
-                position2.col = 1;
-                position3.row = 2;
-                position3.col = 0;
-                set_winner(p[0][2]);
-            }
-        }
-        // if the games end and has no winner this will set winner to N
-        else if (isMovesLeft(p) == false)
-        {
-            isFinished = true;
-            set_winner('N');
-        }
-    }
-
-    void get_position()
-    {
-        int pos;
-
-        // check if chosen number is empty and to prevent overwrite
-        while (1)
-        {
-            cout << "Plese enter number where do you want to  :  ";
-            cin >> pos;
-
-            if (isMovesSame(p, pos) == true)
-            {
-                cout << "It was choosen before \n\n";
-                continue;
-            }
-
-            if (pos < 1 || pos > 9)
-            {
-                continue;
-            }
-
-            able_to_exit = true;
-
-            if (able_to_exit == true)
-                break;
-        }
-
-        // assign chosen number and symbol to right index
-        switch (pos)
-        {
-        case 7:
-            p[0][0] = opponent;
-            num_p[0][0] = ' ';
-            break;
-
-        case 8:
-            p[0][1] = opponent;
-            num_p[0][1] = ' ';
-            break;
-
-        case 9:
-            p[0][2] = opponent;
-            num_p[0][2] = ' ';
-            break;
-
-        case 4:
-            p[1][0] = opponent;
-            num_p[1][0] = ' ';
-            break;
-
-        case 5:
-            p[1][1] = opponent;
-            num_p[1][1] = ' ';
-            break;
-
-        case 6:
-            p[1][2] = opponent;
-            num_p[1][2] = ' ';
-            break;
-
-        case 1:
-            p[2][0] = opponent;
-            num_p[2][0] = ' ';
-            break;
-
-        case 2:
-            p[2][1] = opponent;
-            num_p[2][1] = ' ';
-            break;
-
-        case 3:
-            p[2][2] = opponent;
-            num_p[2][2] = ' ';
-            break;
-
-        default:
-            cout << "\nNumber invalid !!\n\n";
-            break;
-        }
-    }
+    void get_position();
 
     // ordered functions by importance
-    void player_execute()
-    {
-        // clear text
-        system("clear");
-        show_Ui();
-        get_position();
-
-        check_winner();
-
-        if (isFinished == false)
-        {
-            lead_road(player);
-        }
-    }
+    void player_execute();
 
     // all bot selections moves is chosen there. choose move considering mode and
     // pick the best move
@@ -490,3 +261,240 @@ public:
         }
     }
 };
+
+void Base::show_Ui()
+{
+    // convert positions to a varble to call them easier
+    char a = p[0][0];
+    char b = p[0][1];
+    char c = p[0][2];
+    char d = p[1][0];
+    char e = p[1][1];
+    char f = p[1][2];
+    char g = p[2][0];
+    char h = p[2][1];
+    char i = p[2][2];
+
+    // convert available choices to a varble to call them easier
+    char j = num_p[0][0];
+    char k = num_p[0][1];
+    char l = num_p[0][2];
+    char m = num_p[1][0];
+    char n = num_p[1][1];
+    char o = num_p[1][2];
+    char p = num_p[2][0];
+    char q = num_p[2][1];
+    char r = num_p[2][2];
+
+    // show them via using format string in c++
+    cout << endl;
+    if (isFinished == true)
+    {
+        printf("          Final match               Winner moves       \n\n");
+    }
+    else
+        printf("          Game match             Available chioces       \n\n");
+    printf("            |     |                   |     |             \n");
+    printf("         %c  |  %c  |  %c             %c  |  %c  |  %c       \n", a, b, c, j, k, l);
+    printf("        ____|_____|_____          ____|_____|_____        \n");
+    printf("            |     |                   |     |             \n");
+    printf("         %c  |  %c  |  %c     ==>     %c  |  %c  |  %c       \n", d, e, f, m, n, o);
+    printf("        ____|_____|_____          ____|_____|_____        \n");
+    printf("            |     |                   |     |             \n");
+    printf("         %c  |  %c  |  %c             %c  |  %c  |  %c       \n", g, h, i, p, q, r);
+    printf("            |     |                   |     |             \n\n\n");
+
+    if (isFinished == true)
+    {
+        printf("\033[0m Final resault: ");
+        printf("     \033[33;44m Bot :%i \033[0m    vs    \033[33;44m You :%i ", player_won[0], player_won[1]);
+        printf("\033[0m");
+        // printf("\033[33m");
+    }
+}
+
+void Base::check_winner()
+{
+
+    for (int i = 0; i < 3; i++)
+    {
+        // for loop to check 3 rows
+
+        //  _*_|_*_|_*_
+        //  ___|___|___
+        //     |   |
+        if (p[i][0] == p[i][1] && p[i][1] == p[i][2])
+        {
+            if (p[i][0] != '_')
+            {
+                // if 3 index are same  (X or O)  isFinished set
+                // to true to end execute and set winner
+                isFinished = true;
+                position1.row = position2.row = position3.row = i;
+                position1.col = 0;
+                position2.col = 1;
+                position3.col = 2;
+                set_winner(p[i][0]);
+                break;
+            }
+        }
+
+        // for loop to check 3 coulms
+
+        //  _*_|___|___
+        //  _*_|___|___
+        //   * |   |
+        else if (p[0][i] == p[1][i] && p[1][i] == p[2][i])
+        {
+            if (p[0][i] != '_')
+            {
+                isFinished = true;
+                position1.col = position2.col = position3.col = i;
+                position1.row = 0;
+                position2.row = 1;
+                position3.row = 2;
+                set_winner(p[0][i]);
+                break;
+            }
+        }
+    }
+
+    // for loop to check orib
+
+    //  _*_|___|___
+    //  ___|_*_|___
+    //     |   | *
+    if (p[0][0] == p[1][1] && p[1][1] == p[2][2])
+    {
+        if (p[0][0] != '_')
+        {
+            isFinished = true;
+            position1.row = position1.col = 0;
+            position2.row = position2.col = 1;
+            position3.row = position3.col = 2;
+            set_winner(p[0][0]);
+        }
+    }
+
+    // for loop to check orib
+
+    //  ___|___|_*_
+    //  ___|_*_|___
+    //   * |   |
+    else if (p[0][2] == p[1][1] && p[1][1] == p[2][0])
+    {
+        if (p[0][2] != '_')
+        {
+            isFinished = true;
+            position1.row = 0;
+            position1.col = 2;
+            position2.row = 1;
+            position2.col = 1;
+            position3.row = 2;
+            position3.col = 0;
+            set_winner(p[0][2]);
+        }
+    }
+    // if the games end and has no winner this will set winner to N
+    else if (isMovesLeft(p) == false)
+    {
+        isFinished = true;
+        set_winner('N');
+    }
+}
+
+void Base::get_position()
+{
+    int pos;
+
+    // check if chosen number is empty and to prevent overwrite
+    while (1)
+    {
+        cout << "Plese enter number where do you want to  :  ";
+        cin >> pos;
+
+        if (isMovesSame(p, pos) == true)
+        {
+            cout << "It was choosen before \n\n";
+            continue;
+        }
+
+        if (pos < 1 || pos > 9)
+        {
+            continue;
+        }
+
+        able_to_exit = true;
+
+        if (able_to_exit == true)
+            break;
+    }
+
+    // assign chosen number and symbol to right index
+    switch (pos)
+    {
+    case 7:
+        p[0][0] = opponent;
+        num_p[0][0] = ' ';
+        break;
+
+    case 8:
+        p[0][1] = opponent;
+        num_p[0][1] = ' ';
+        break;
+
+    case 9:
+        p[0][2] = opponent;
+        num_p[0][2] = ' ';
+        break;
+
+    case 4:
+        p[1][0] = opponent;
+        num_p[1][0] = ' ';
+        break;
+
+    case 5:
+        p[1][1] = opponent;
+        num_p[1][1] = ' ';
+        break;
+
+    case 6:
+        p[1][2] = opponent;
+        num_p[1][2] = ' ';
+        break;
+
+    case 1:
+        p[2][0] = opponent;
+        num_p[2][0] = ' ';
+        break;
+
+    case 2:
+        p[2][1] = opponent;
+        num_p[2][1] = ' ';
+        break;
+
+    case 3:
+        p[2][2] = opponent;
+        num_p[2][2] = ' ';
+        break;
+
+    default:
+        cout << "\nNumber invalid !!\n\n";
+        break;
+    }
+}
+
+void Base::player_execute()
+{
+    // clear text
+    system("clear");
+    show_Ui();
+    get_position();
+
+    check_winner();
+
+    if (isFinished == false)
+    {
+        lead_road(player);
+    }
+}
