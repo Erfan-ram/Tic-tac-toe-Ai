@@ -1,5 +1,8 @@
-// C++ program to find the next optimal move for
-// a player
+// Ai = Minimax
+
+// C++ Ai to find the next optimal move depends on
+// Hard , intermediate and easy
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -300,26 +303,5 @@ Move findBestMove(char board[3][3])
 		}
 	}
 
-	// printf("The value of the best Move is : %d\n\n",
-	// 	   bestVal);
-
 	return bestMove;
 }
-
-// Driver code
-// int main()
-// {
-// 	char board[3][3] =
-// 	{
-// 		{ 'x', 'o', 'x' },
-// 		{ 'o', 'o', 'x' },
-// 		{ '_', '_', '_' }
-// 	};
-
-// 	Move bestMove = findBestMove(board);
-
-// 	printf("The Optimal Move is :\n");
-// 	printf("ROW: %d COL: %d\n\n", bestMove.row,
-// 								bestMove.col );
-// 	return 0;
-// }
