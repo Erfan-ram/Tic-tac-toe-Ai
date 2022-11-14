@@ -52,214 +52,25 @@ public:
 
     // all bot selections moves is chosen there. choose move considering mode and
     // pick the best move
-    void bot_execute()
-    {
-        system("clear");
-        show_Ui();
+    void bot_execute();
 
-        if (mode == "med")
-        {
-            if (med_switch == "hard")
-            {
-                mode = "hard";
-                bestMove = findBestMove(p);
-                p[bestMove.row][bestMove.col] = player;
-                num_p[bestMove.row][bestMove.col] = ' ';
-                mode = "med";
-                med_switch = "easy";
-            }
-            else
-            {
-                mode = "easy";
-                bestMove = findBestMove(p);
-                p[bestMove.row][bestMove.col] = player;
-                num_p[bestMove.row][bestMove.col] = ' ';
-                mode = "med";
-                med_switch = "hard";
-            }
-        }
-        else
-        {
-            bestMove = findBestMove(p);
-            p[bestMove.row][bestMove.col] = player;
-            num_p[bestMove.row][bestMove.col] = ' ';
-            // cout << mode;
-        }
-        // check if games end or not
-        check_winner();
-
-        if (isFinished == false)
-        {
-            lead_road(opponent);
-        }
-    }
     // set turn to prenvent wrong move considering last move
-    void lead_road(char turn)
-    {
-        if (turn == player)
-        {
-            bot_execute();
-        }
-        else
-        {
-            player_execute();
-        }
-    }
+    void lead_road(char turn);
 
     // show the winner and show the match .
     // ask to play again to call reset_game() functions
-    void set_winner(char result)
-    {
-        printf("\033[33m");
-
-        if (result == player)
-        {
-            system("clear");
-            cout << "\n        you lose !!!\n\n\t\tBot won the match\n\n";
-            player_won[0] += 1;
-            showWin();
-            show_Ui();
-            reset_game();
-        }
-        else if (result == opponent)
-        {
-            system("clear");
-            cout << "\n        congratulations !!!\n\n\t\t you won the match\n\n";
-            player_won[1] += 1;
-            showWin();
-            show_Ui();
-            reset_game();
-        }
-        else if (result == 'N')
-        {
-            system("clear");
-            cout << "\n        Draw !\n\n\t\tGame ends without a winner\n\n";
-            show_Ui();
-            reset_game();
-        }
-    }
+    void set_winner(char result);
 
     // to set which moves cause win on available choice array
-    void showWin()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                if (num_p[i][j] != ' ')
-                {
-                    num_p[i][j] = ' ';
-                }
-            }
-        }
-        // set win positions
-        num_p[position1.row][position1.col] = '*';
-        num_p[position2.row][position2.col] = '*';
-        num_p[position3.row][position3.col] = '*';
-    }
+    void showWin();
 
     // mode is chosen by user
     // also first player is chosen here
-    void start_game()
-    {
-        char ask = '_';
-        printf("\033[31m");
-
-        cout << "which would start first ?\n\t";
-        cout << "enter b for bot | any character for you to start the game :  ";
-        cin >> ask;
-
-        cout << "\n\nok and which mode ?\n\t";
-        cout << "enter b for beginner | enter i for intermediate | p for professional :  ";
-        cin >> mode;
-
-        if (mode == "b")
-        {
-            mode = "easy";
-        }
-        else if (mode == "p")
-        {
-            mode = "hard";
-        }
-        else
-        {
-            mode = "med";
-        }
-
-        if (ask == 'b')
-        {
-            lead_road(player);
-        }
-        else
-        {
-            lead_road(opponent);
-        }
-    }
+    void start_game();
 
     // if user wants to play again it will reset game match - available choices
     // and set variables to play again
-    void reset_game()
-    {
-        string ask_again = "default";
-        bool can_exit = false;
-        bool play_aagain = false;
-        int k = 0;
-        char numss[] = "789456123";
-
-        while (1)
-        {
-            try
-            {
-                cout << "\n\n\tDo you want to have another chance to play (y/n) ?  ";
-                cin >> ask_again;
-
-                if (ask_again == "yes" || ask_again == "y")
-                {
-                    can_exit = true;
-                    play_aagain = true;
-                }
-                else if (ask_again == "no" || ask_again == "n")
-                {
-                    can_exit = true;
-                }
-                else
-                {
-                    throw "eror";
-                }
-            }
-            catch (...)
-            {
-                cout << "invalid entry !!!";
-            }
-
-            if (can_exit == true)
-            {
-                break;
-            }
-        }
-        // if yes reset list and array and call start_game() to start the game
-
-        if (play_aagain)
-        {
-            printf("\033[33m");
-            system("clear");
-            able_to_exit = false;
-            isFinished = false;
-
-            for (int i = 0; i < 3; i++)
-                for (int j = 0; j < 3; j++)
-                    p[i][j] = '_';
-
-            for (int i = 0; i < 3; i++)
-                for (int j = 0; j < 3; j++)
-                {
-                    num_p[i][j] = numss[k];
-                    k += 1;
-                }
-
-            start_game();
-        }
-    }
+    void reset_game();
 };
 
 void Base::show_Ui()
@@ -496,5 +307,411 @@ void Base::player_execute()
     if (isFinished == false)
     {
         lead_road(player);
+    }
+}
+
+void Base::bot_execute()
+{
+    system("clear");
+    show_Ui();
+
+    if (mode == "med")
+    {
+        if (med_switch == "hard")
+        {
+            mode = "hard";
+            bestMove = findBestMove(p);
+            p[bestMove.row][bestMove.col] = player;
+            num_p[bestMove.row][bestMove.col] = ' ';
+            mode = "med";
+            med_switch = "easy";
+        }
+        else
+        {
+            mode = "easy";
+            bestMove = findBestMove(p);
+            p[bestMove.row][bestMove.col] = player;
+            num_p[bestMove.row][bestMove.col] = ' ';
+            mode = "med";
+            med_switch = "hard";
+        }
+    }
+    else
+    {
+        bestMove = findBestMove(p);
+        p[bestMove.row][bestMove.col] = player;
+        num_p[bestMove.row][bestMove.col] = ' ';
+        // cout << mode;
+    }
+    // check if games end or not
+    check_winner();
+
+    if (isFinished == false)
+    {
+        lead_road(opponent);
+    }
+}
+
+void Base::lead_road(char turn)
+{
+    if (turn == player)
+    {
+        bot_execute();
+    }
+    else
+    {
+        player_execute();
+    }
+}
+
+void Base::set_winner(char result)
+{
+    printf("\033[33m");
+
+    if (result == player)
+    {
+        system("clear");
+        cout << "\n        you lose !!!\n\n\t\tBot won the match\n\n";
+        player_won[0] += 1;
+        showWin();
+        show_Ui();
+        reset_game();
+    }
+    else if (result == opponent)
+    {
+        system("clear");
+        cout << "\n        congratulations !!!\n\n\t\t you won the match\n\n";
+        player_won[1] += 1;
+        showWin();
+        show_Ui();
+        reset_game();
+    }
+    else if (result == 'N')
+    {
+        system("clear");
+        cout << "\n        Draw !\n\n\t\tGame ends without a winner\n\n";
+        show_Ui();
+        reset_game();
+    }
+}
+
+void Base::showWin()
+
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (num_p[i][j] != ' ')
+            {
+                num_p[i][j] = ' ';
+            }
+        }
+    }
+    // set win positions
+    num_p[position1.row][position1.col] = '*';
+    num_p[position2.row][position2.col] = '*';
+    num_p[position3.row][position3.col] = '*';
+}
+
+void Base::start_game()
+{
+    char ask = '_';
+    printf("\033[31m");
+
+    cout << "which would start first ?\n\t";
+    cout << "enter b for bot | any character for you to start the game :  ";
+    cin >> ask;
+
+    cout << "\n\nok and which mode ?\n\t";
+    cout << "enter b for beginner | enter i for intermediate | p for professional :  ";
+    cin >> mode;
+
+    if (mode == "b")
+    {
+        mode = "easy";
+    }
+    else if (mode == "p")
+    {
+        mode = "hard";
+    }
+    else
+    {
+        mode = "med";
+    }
+
+    if (ask == 'b')
+    {
+        lead_road(player);
+    }
+    else
+    {
+        lead_road(opponent);
+    }
+}
+
+void Base::reset_game()
+{
+    string ask_again = "default";
+    bool can_exit = false;
+    bool play_aagain = false;
+    int k = 0;
+    char numss[] = "789456123";
+
+    while (1)
+    {
+        try
+        {
+            cout << "\n\n\tDo you want to have another chance to play (y/n) ?  ";
+            cin >> ask_again;
+
+            if (ask_again == "yes" || ask_again == "y")
+            {
+                can_exit = true;
+                play_aagain = true;
+            }
+            else if (ask_again == "no" || ask_again == "n")
+            {
+                can_exit = true;
+            }
+            else
+            {
+                throw "eror";
+            }
+        }
+        catch (...)
+        {
+            cout << "invalid entry !!!";
+        }
+
+        if (can_exit == true)
+        {
+            break;
+        }
+    }
+    // if yes reset list and array and call start_game() to start the game
+
+    if (play_aagain)
+    {
+        printf("\033[33m");
+        system("clear");
+        able_to_exit = false;
+        isFinished = false;
+
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                p[i][j] = '_';
+
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+            {
+                num_p[i][j] = numss[k];
+                k += 1;
+            }
+
+        start_game();
+    }
+}
+
+void Base::bot_execute()
+{
+    system("clear");
+    show_Ui();
+
+    if (mode == "med")
+    {
+        if (med_switch == "hard")
+        {
+            mode = "hard";
+            bestMove = findBestMove(p);
+            p[bestMove.row][bestMove.col] = player;
+            num_p[bestMove.row][bestMove.col] = ' ';
+            mode = "med";
+            med_switch = "easy";
+        }
+        else
+        {
+            mode = "easy";
+            bestMove = findBestMove(p);
+            p[bestMove.row][bestMove.col] = player;
+            num_p[bestMove.row][bestMove.col] = ' ';
+            mode = "med";
+            med_switch = "hard";
+        }
+    }
+    else
+    {
+        bestMove = findBestMove(p);
+        p[bestMove.row][bestMove.col] = player;
+        num_p[bestMove.row][bestMove.col] = ' ';
+        // cout << mode;
+    }
+    // check if games end or not
+    check_winner();
+
+    if (isFinished == false)
+    {
+        lead_road(opponent);
+    }
+}
+
+void Base::lead_road(char turn)
+{
+    if (turn == player)
+    {
+        bot_execute();
+    }
+    else
+    {
+        player_execute();
+    }
+}
+
+void Base::set_winner(char result)
+{
+    printf("\033[33m");
+
+    if (result == player)
+    {
+        system("clear");
+        cout << "\n        you lose !!!\n\n\t\tBot won the match\n\n";
+        player_won[0] += 1;
+        showWin();
+        show_Ui();
+        reset_game();
+    }
+    else if (result == opponent)
+    {
+        system("clear");
+        cout << "\n        congratulations !!!\n\n\t\t you won the match\n\n";
+        player_won[1] += 1;
+        showWin();
+        show_Ui();
+        reset_game();
+    }
+    else if (result == 'N')
+    {
+        system("clear");
+        cout << "\n        Draw !\n\n\t\tGame ends without a winner\n\n";
+        show_Ui();
+        reset_game();
+    }
+}
+
+void Base::showWin()
+
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (num_p[i][j] != ' ')
+            {
+                num_p[i][j] = ' ';
+            }
+        }
+    }
+    // set win positions
+    num_p[position1.row][position1.col] = '*';
+    num_p[position2.row][position2.col] = '*';
+    num_p[position3.row][position3.col] = '*';
+}
+
+void Base::start_game()
+{
+    char ask = '_';
+    printf("\033[31m");
+
+    cout << "which would start first ?\n\t";
+    cout << "enter b for bot | any character for you to start the game :  ";
+    cin >> ask;
+
+    cout << "\n\nok and which mode ?\n\t";
+    cout << "enter b for beginner | enter i for intermediate | p for professional :  ";
+    cin >> mode;
+
+    if (mode == "b")
+    {
+        mode = "easy";
+    }
+    else if (mode == "p")
+    {
+        mode = "hard";
+    }
+    else
+    {
+        mode = "med";
+    }
+
+    if (ask == 'b')
+    {
+        lead_road(player);
+    }
+    else
+    {
+        lead_road(opponent);
+    }
+}
+
+void Base::reset_game()
+{
+    string ask_again = "default";
+    bool can_exit = false;
+    bool play_aagain = false;
+    int k = 0;
+    char numss[] = "789456123";
+
+    while (1)
+    {
+        try
+        {
+            cout << "\n\n\tDo you want to have another chance to play (y/n) ?  ";
+            cin >> ask_again;
+
+            if (ask_again == "yes" || ask_again == "y")
+            {
+                can_exit = true;
+                play_aagain = true;
+            }
+            else if (ask_again == "no" || ask_again == "n")
+            {
+                can_exit = true;
+            }
+            else
+            {
+                throw "eror";
+            }
+        }
+        catch (...)
+        {
+            cout << "invalid entry !!!";
+        }
+
+        if (can_exit == true)
+        {
+            break;
+        }
+    }
+    // if yes reset list and array and call start_game() to start the game
+
+    if (play_aagain)
+    {
+        printf("\033[33m");
+        system("clear");
+        able_to_exit = false;
+        isFinished = false;
+
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                p[i][j] = '_';
+
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+            {
+                num_p[i][j] = numss[k];
+                k += 1;
+            }
+
+        start_game();
     }
 }
