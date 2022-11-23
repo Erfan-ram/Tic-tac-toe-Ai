@@ -17,7 +17,7 @@ private:
     string med_switch = "easy";
 
     // save players choices to prevent edit chosen field
-    bool is_finished = false;
+    bool isFinished = false;
 
     // index field valeu for showing match
     char p[3][3] = {
@@ -66,7 +66,7 @@ public:
 
         // show them via using format string in c++
         cout << endl;
-        if (is_finished == true)
+        if (isFinished)
         {
             printf("          Final match               Winner moves       \n\n");
         }
@@ -82,7 +82,7 @@ public:
         printf("         %c  |  %c  |  %c             %c  |  %c  |  %c       \n", g, h, i, p, q, r);
         printf("            |     |                   |     |             \n\n\n");
 
-        if (is_finished == true)
+        if (isFinished)
         {
             printf("\033[0m Final resault: ");
             printf("     \033[33;44m Bot :%i \033[0m    vs    \033[33;44m You :%i ", player_won[0], player_won[1]);
@@ -106,9 +106,9 @@ public:
             {
                 if (p[i][0] != '_')
                 {
-                    // if 3 index are same  (X or O)  is_finished set
+                    // if 3 index are same  (X or O)  isFinished set
                     // to true to end execute and set winner
-                    is_finished = true;
+                    isFinished = true;
                     position1.row = position2.row = position3.row = i;
                     position1.col = 0;
                     position2.col = 1;
@@ -127,7 +127,7 @@ public:
             {
                 if (p[0][i] != '_')
                 {
-                    is_finished = true;
+                    isFinished = true;
                     position1.col = position2.col = position3.col = i;
                     position1.row = 0;
                     position2.row = 1;
@@ -147,7 +147,7 @@ public:
         {
             if (p[0][0] != '_')
             {
-                is_finished = true;
+                isFinished = true;
                 position1.row = position1.col = 0;
                 position2.row = position2.col = 1;
                 position3.row = position3.col = 2;
@@ -164,7 +164,7 @@ public:
         {
             if (p[0][2] != '_')
             {
-                is_finished = true;
+                isFinished = true;
                 position1.row = 0;
                 position1.col = 2;
                 position2.row = 1;
@@ -177,7 +177,7 @@ public:
         // if the games end and has no winner this will set winner to N
         else if (isMovesLeft(p) == false)
         {
-            is_finished = true;
+            isFinished = true;
             set_winner('N');
         }
     }
@@ -273,7 +273,7 @@ public:
 
         check_winner();
 
-        if (is_finished == false)
+        if (isFinished == false)
         {
             lead_road(player);
         }
@@ -317,7 +317,7 @@ public:
         // check if games end or not
         check_winner();
 
-        if (is_finished == false)
+        if (isFinished == false)
         {
             lead_road(opponent);
         }
@@ -473,7 +473,7 @@ public:
             printf("\033[33m");
             system("clear");
             able_to_exit = false;
-            is_finished = false;
+            isFinished = false;
 
             for (int i = 0; i < 3; i++)
                 for (int j = 0; j < 3; j++)
