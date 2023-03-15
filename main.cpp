@@ -1,4 +1,4 @@
-#include </mnt/nvme1n1p1/github/Tic-tac-toe-Ai/main.cpp>
+#include </mnt/nvme1n1p1/github/Tic-tac-toe-Ai/Built.h>
 
 int main()
 {
