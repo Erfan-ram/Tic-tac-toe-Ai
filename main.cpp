@@ -1,6 +1,4 @@
-// in the name of the Lord :: ALLAH
-
-#include </mnt/01D8769274F3FF00/cpp-projects/tic-tac-toe-Ai/Built.h>
+#include </mnt/nvme1n1p1/github/Tic-tac-toe-Ai/Built.h>
 
 int main()
 {
