@@ -44,7 +44,7 @@ void Base::reset_game()
         printf("\033[33m");
         system("clear");
         able_to_exit = false;
-        is_finished = false;
+        isFinished = false;
 
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
