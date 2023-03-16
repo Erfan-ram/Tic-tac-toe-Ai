@@ -24,7 +24,7 @@ void Base::show_Ui()
 
     // show them via using format string in c++
     cout << endl;
-    if (is_finished == true)
+    if (isFinished == true)
     {
         printf("          Final match               Winner moves       \n\n");
     }
@@ -40,7 +40,7 @@ void Base::show_Ui()
     printf("         %c  |  %c  |  %c             %c  |  %c  |  %c       \n", g, h, i, p, q, r);
     printf("            |     |                   |     |             \n\n\n");
 
-    if (is_finished == true)
+    if (isFinished == true)
     {
         printf("\033[0m Final resault: ");
         printf("     \033[33;44m Bot :%i \033[0m    vs    \033[33;44m You :%i ", player_won[0], player_won[1]);
