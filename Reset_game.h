@@ -10,7 +10,7 @@ void Base::reset_game()
     {
         try
         {
-            cout << "\n\n\tDo you want to have another chance to play (y/n) ?  ";
+            cout << "\n\n\tDo you want to have another chance to play (y/n) ? ";
             cin >> ask_again;
 
             if (ask_again == "yes" || ask_again == "y")
