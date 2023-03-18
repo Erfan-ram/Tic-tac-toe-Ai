@@ -1,5 +1,62 @@
 #include "Built.h"
 
+Base::Base()
+{
+    position1.row = position2.row = position3.row = -1;
+    position1.col = position2.col = position3.col = -1;
+}
+
+void Base::show_Ui()
+{
+    // convert positions to a varble to call them easier
+    char a = p[0][0];
+    char b = p[0][1];
+    char c = p[0][2];
+    char d = p[1][0];
+    char e = p[1][1];
+    char f = p[1][2];
+    char g = p[2][0];
+    char h = p[2][1];
+    char i = p[2][2];
+
+    // convert available choices to a varble to call them easier
+    char j = num_p[0][0];
+    char k = num_p[0][1];
+    char l = num_p[0][2];
+    char m = num_p[1][0];
+    char n = num_p[1][1];
+    char o = num_p[1][2];
+    char p = num_p[2][0];
+    char q = num_p[2][1];
+    char r = num_p[2][2];
+
+    // show them via using format string in c++
+    cout << endl;
+    if (isFinished == true)
+    {
+        printf("          Final match               Winner moves       \n\n");
+    }
+    else
+        printf("          Game match             Available chioces       \n\n");
+    printf("            |     |                   |     |             \n");
+    printf("         %c  |  %c  |  %c             %c  |  %c  |  %c       \n", a, b, c, j, k, l);
+    printf("        ____|_____|_____          ____|_____|_____        \n");
+    printf("            |     |                   |     |             \n");
+    printf("         %c  |  %c  |  %c     ==>     %c  |  %c  |  %c       \n", d, e, f, m, n, o);
+    printf("        ____|_____|_____          ____|_____|_____        \n");
+    printf("            |     |                   |     |             \n");
+    printf("         %c  |  %c  |  %c             %c  |  %c  |  %c       \n", g, h, i, p, q, r);
+    printf("            |     |                   |     |             \n\n\n");
+
+    if (isFinished == true)
+    {
+        printf("\033[0m Final resault: ");
+        printf("     \033[33;44m Bot :%i \033[0m    vs    \033[33;44m You :%i ", player_won[0], player_won[1]);
+        printf("\033[0m");
+        // printf("\033[33m");
+    }
+}
+
 void Base::check_winner()
 {
 
@@ -526,5 +583,68 @@ void Base::start_game()
     else
     {
         lead_road(opponent);
+    }
+}
+
+void Base::reset_game()
+{
+    string ask_again = "default";
+    bool can_exit = false;
+    bool play_aagain = false;
+    int k = 0;
+    char numss[] = "789456123";
+
+    while (1)
+    {
+        try
+        {
+            cout << "\n\n\tDo you want to have another chance to play (y/n) ? ";
+            cin >> ask_again;
+
+            if (ask_again == "yes" || ask_again == "y")
+            {
+                can_exit = true;
+                play_aagain = true;
+            }
+            else if (ask_again == "no" || ask_again == "n")
+            {
+                can_exit = true;
+            }
+            else
+            {
+                throw "eror";
+            }
+        }
+        catch (...)
+        {
+            cout << "invalid entry !!!";
+        }
+
+        if (can_exit == true)
+        {
+            break;
+        }
+    }
+    // if yes reset list and array and call start_game() to start the game
+
+    if (play_aagain)
+    {
+        printf("\033[33m");
+        system("clear");
+        able_to_exit = false;
+        isFinished = false;
+
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                p[i][j] = '_';
+
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+            {
+                num_p[i][j] = numss[k];
+                k += 1;
+            }
+
+        start_game();
     }
 }

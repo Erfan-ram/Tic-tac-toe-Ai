@@ -1,7 +1,7 @@
-#ifndef BUID // include guard
-#define BUID
+#ifndef BUILD // include guard
+#define BUILD
 
-#include "Ai_module.h"
+// #include "Ai_module.h"
 #include <iostream>
 #include <string>
 
@@ -36,11 +36,7 @@ private:
 
 public:
     // constructor to set name,turn
-    Base()
-    {
-        position1.row = position2.row = position3.row = -1;
-        position1.col = position2.col = position3.col = -1;
-    }
+    Base();
 
     // show game match and available choices
     void show_Ui();
@@ -76,9 +72,4 @@ public:
     void reset_game();
 };
 
-
-#include </mnt/nvme1n1p1/github/Tic-tac-toe-Ai/Terminal_UI.h>
-#include </mnt/nvme1n1p1/github/Tic-tac-toe-Ai/Reset_game.h>
-
-
-#endif /* BUID */
+#endif /* BUILD */
