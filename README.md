@@ -41,7 +41,7 @@ make run
 ```
 **or**
 ```bash
-./calculator
+./tic-tac-toe
 ```
 > i optimized Makefile to run the program using `make run` 
 > - if you want to develop it or test your code you can locate your codes on **Makefile** line 19
