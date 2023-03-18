@@ -7,10 +7,10 @@ all: output
 output: start.o main.o
 	$(CC) start.o src/Main.o -o tic-tac-toe
 
-calculator.o: calculator.cpp
+calculator.o: start.cpp
 	$(CC) $(CFLAGS) start.cpp -o start.o
 
-add-mine.o: src/add-mine.cpp
+main.o: src/Main.cpp
 	$(CC) $(CFLAGS) src/Main.cpp $(DIR)Main.o
 
 # You can add your codes here
