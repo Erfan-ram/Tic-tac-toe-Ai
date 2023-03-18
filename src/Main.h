@@ -6,10 +6,6 @@
 #include <string>
 
 using namespace std;
-Move bestMove;
-win_pos position1;
-win_pos position2;
-win_pos position3;
 
 // main class contain execute - set turn - check winner and ....
 // just create an object and run start_game() -all you need to change is on execute functions
