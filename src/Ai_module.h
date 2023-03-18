@@ -1,3 +1,6 @@
+#ifndef AI_MODULE // include guard
+#define AI_MODULE
+
 // Ai = Minimax
 
 // C++ Ai to find the next optimal move depends on
@@ -305,3 +308,5 @@ Move findBestMove(char board[3][3])
 
 	return bestMove;
 }
+
+#endif /* AI_MODULE */
