@@ -18,6 +18,7 @@ struct win_pos
 {
 	int row, col;
 };
+
 int player_won[] = {0, 0};
 char player = 'x', opponent = 'o';
 

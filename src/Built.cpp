@@ -1,4 +1,10 @@
 #include "Built.h"
+#include "Ai_module.h"
+
+Move bestMove;
+win_pos position1;
+win_pos position2;
+win_pos position3;
 
 Base::Base()
 {
