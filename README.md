@@ -59,4 +59,4 @@ g++ start.cpp src/Main.cpp -o tic-tac-toe
 ```
 
 ---
-- if you are not familiar with clean coding and modules and headers or you are beginner at coding you can check `old-design` branch that exclude header files .
+- if you are not familiar with clean coding and modules and headers or you are beginner at coding you can check `old-struct` branch that exclude header files . and it just need to run main.cpp
