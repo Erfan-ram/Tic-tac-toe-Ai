@@ -15,7 +15,7 @@ main.o: src/Main.cpp
 
 # You can add your codes here
 clean: 
-	rm -rf *.o calculator
+	rm -rf *.o
 	clear
 
 run:
