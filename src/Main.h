@@ -35,17 +35,17 @@ public:
     Base();
 
     // show game match and available choices
-    void show_Ui();
+    void showUi();
 
     void showTurn();
 
     // check all possible win positions using for loop for coulm and row
-    void check_winner();
+    void checkWinner();
 
-    void get_position();
+    void getPosition();
 
     // ordered functions by importance
-    void player_execute();
+    void playerExecution();
 
     // all bot selections moves is chosen there. choose move considering mode and
     // pick the best move

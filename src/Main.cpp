@@ -242,10 +242,10 @@ void Base::playerExecution()
 {
     // clear text
     system("clear");
-    show_Ui();
-    get_position();
+    showUi();
+    getPosition();
 
-    check_winner();
+    checkWinner();
 
     if (isFinished == false)
     {
@@ -256,7 +256,7 @@ void Base::playerExecution()
 void Base::bot_execute()
 {
     system("clear");
-    show_Ui();
+    showUi();
 
     if (mode == "med")
     {
@@ -287,7 +287,7 @@ void Base::bot_execute()
         // cout << mode;
     }
     // check if games end or not
-    check_winner();
+    checkWinner();
 
     if (isFinished == false)
     {
@@ -303,7 +303,7 @@ void Base::lead_road(char turn)
     }
     else
     {
-        player_execute();
+        playerExecution();
     }
 }
 
@@ -317,7 +317,7 @@ void Base::set_winner(char result)
         cout << "\n        you lose !!!\n\n\t\tBot won the match\n\n";
         player_won[0] += 1;
         showWin();
-        show_Ui();
+        showUi();
         reset_game();
     }
     else if (result == opponent)
@@ -326,14 +326,14 @@ void Base::set_winner(char result)
         cout << "\n        congratulations !!!\n\n\t\t you won the match\n\n";
         player_won[1] += 1;
         showWin();
-        show_Ui();
+        showUi();
         reset_game();
     }
     else if (result == 'N')
     {
         system("clear");
         cout << "\n        Draw !\n\n\t\tGame ends without a winner\n\n";
-        show_Ui();
+        showUi();
         reset_game();
     }
 }
