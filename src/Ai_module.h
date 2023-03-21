@@ -20,7 +20,7 @@ struct win_pos
 };
 
 int player_won[] = {0, 0};
-char player = 'x', opponent = 'o';
+const char Bot = 'x', opponent = 'o';
 
 // This function returns true if there are moves
 // remaining on the board. It returns false if
@@ -101,7 +101,7 @@ int evaluate(char b[3][3])
 		if (b[row][0] == b[row][1] &&
 			b[row][1] == b[row][2])
 		{
-			if (b[row][0] == player)
+			if (b[row][0] == Bot)
 			{
 				if (mode == "hard")
 					return +10;
@@ -125,7 +125,7 @@ int evaluate(char b[3][3])
 		if (b[0][col] == b[1][col] &&
 			b[1][col] == b[2][col])
 		{
-			if (b[0][col] == player)
+			if (b[0][col] == Bot)
 			{
 				if (mode == "hard")
 					return +10;
@@ -146,7 +146,7 @@ int evaluate(char b[3][3])
 	// Checking for Diagonals for X or O victory.
 	if (b[0][0] == b[1][1] && b[1][1] == b[2][2])
 	{
-		if (b[0][0] == player)
+		if (b[0][0] == Bot)
 		{
 			if (mode == "hard")
 				return +10;
@@ -164,7 +164,7 @@ int evaluate(char b[3][3])
 
 	if (b[0][2] == b[1][1] && b[1][1] == b[2][0])
 	{
-		if (b[0][2] == player)
+		if (b[0][2] == Bot)
 		{
 			if (mode == "hard")
 				return +10;
@@ -220,7 +220,7 @@ int minimax(char board[3][3], int depth, bool isMax)
 				if (board[i][j] == '_')
 				{
 					// Make the move
-					board[i][j] = player;
+					board[i][j] = Bot;
 
 					// Call minimax recursively and choose
 					// the maximum value
@@ -265,7 +265,7 @@ int minimax(char board[3][3], int depth, bool isMax)
 	}
 }
 
-// This will return the best possible move for the player
+// This will return the best possible move for the Bot
 Move findBestMove(char board[3][3])
 {
 
@@ -285,7 +285,7 @@ Move findBestMove(char board[3][3])
 			if (board[i][j] == '_')
 			{
 				// Make the move
-				board[i][j] = player;
+				board[i][j] = Bot;
 
 				// compute evaluation function for this
 				// move.
