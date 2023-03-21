@@ -37,6 +37,8 @@ public:
     // show game match and available choices
     void show_Ui();
 
+    void showTurn();
+
     // check all possible win positions using for loop for coulm and row
     void check_winner();
 
