@@ -62,9 +62,12 @@ void Base::showUi()
         // printf("\033[33m");
     }
 }
-void Base::showTurn()
+char Base::showTurn(const char st[2])
 {
-    
+    if (st == "pl")
+        return player;
+
+    return opponent;
 }
 
 void Base::checkWinner()
