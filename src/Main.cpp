@@ -55,7 +55,7 @@ void Base::showUi(bool playerTurn = false)
     printf("            |     |                   |     |             \n\n\n");
     if (playerTurn)
     {
-        cout << "player :  " << showTurn("pl") << "\tBot :  \t" << showTurn("op");
+        cout << "You : " << showTurn("pl") << "\tBot : " << showTurn("op") << endl;
     }
 
     if (isFinished == true)
@@ -66,7 +66,7 @@ void Base::showUi(bool playerTurn = false)
         // printf("\033[33m");
     }
 }
-char Base::showTurn(const char st[2])
+char Base::showTurn(const string st)
 {
     if (st == "pl")
         return player;

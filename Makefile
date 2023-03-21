@@ -15,7 +15,7 @@ main.o: src/Main.cpp
 
 # You can add your codes here
 clean: 
-	rm -rf *.o
+	rm -rf *.o tic-tac-toe
 	clear
 
 run:
