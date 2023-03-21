@@ -35,9 +35,9 @@ public:
     Base();
 
     // show game match and available choices
-    void showUi();
+    void showUi(bool playerTurn = false);
 
-    char showTurn();
+    char showTurn(const char st[2]);
 
     // check all possible win positions using for loop for coulm and row
     void checkWinner();

@@ -12,7 +12,7 @@ Base::Base()
     position1.col = position2.col = position3.col = -1;
 }
 
-void Base::showUi()
+void Base::showUi(bool playerTurn = false)
 {
     // convert positions to a varble to call them easier
     char a = p[0][0];
@@ -53,6 +53,10 @@ void Base::showUi()
     printf("            |     |                   |     |             \n");
     printf("         %c  |  %c  |  %c             %c  |  %c  |  %c       \n", g, h, i, p, q, r);
     printf("            |     |                   |     |             \n\n\n");
+    if (playerTurn)
+    {
+        cout << "player :  " << showTurn("pl") << "\tBot :  \t" << showTurn("op");
+    }
 
     if (isFinished == true)
     {
@@ -245,7 +249,7 @@ void Base::playerExecution()
 {
     // clear text
     system("clear");
-    showUi();
+    showUi(true);
     getPosition();
 
     checkWinner();
