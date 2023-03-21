@@ -12,7 +12,7 @@ Base::Base()
     position1.col = position2.col = position3.col = -1;
 }
 
-void Base::show_Ui()
+void Base::showUi()
 {
     // convert positions to a varble to call them easier
     char a = p[0][0];
@@ -62,8 +62,12 @@ void Base::show_Ui()
         // printf("\033[33m");
     }
 }
+void Base::showTurn()
+{
+    
+}
 
-void Base::check_winner()
+void Base::checkWinner()
 {
 
     for (int i = 0; i < 3; i++)
@@ -153,7 +157,7 @@ void Base::check_winner()
     }
 }
 
-void Base::get_position()
+void Base::getPosition()
 {
     int pos;
 
@@ -234,7 +238,7 @@ void Base::get_position()
     }
 }
 
-void Base::player_execute()
+void Base::playerExecution()
 {
     // clear text
     system("clear");
