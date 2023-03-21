@@ -55,7 +55,11 @@ void Base::showUi(bool playerTurn = false)
     printf("            |     |                   |     |             \n\n\n");
     if (playerTurn)
     {
-        cout << "You : " << showTurn("pl") << "\tBot : " << showTurn("op") << endl;
+        cout << "\033[103m"
+             << "\033[41m"
+             << "You :" << showTurn("pl") << "\tBot :" << showTurn("op") << endl
+             << "\033[0m"
+             << "\033[31m";
     }
 
     if (isFinished == true)
