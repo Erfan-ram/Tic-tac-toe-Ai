@@ -15,7 +15,7 @@ main.o: src/Main.cpp
 
 # You can add your codes here
 clean: 
-	rm -rf *.o tic-tac-toe
+	find . -name '*.o' -type f -delete
 	clear
 
 run:
