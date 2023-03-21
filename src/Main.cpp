@@ -69,9 +69,9 @@ void Base::showUi(bool playerTurn = false)
 char Base::showTurn(const string st)
 {
     if (st == "pl")
-        return player;
+        return opponent;
 
-    return opponent;
+    return Bot;
 }
 
 void Base::checkWinner()
@@ -256,7 +256,7 @@ void Base::playerExecution()
 
     if (isFinished == false)
     {
-        lead_road(player);
+        lead_road(Bot);
     }
 }
 
@@ -271,7 +271,7 @@ void Base::bot_execute()
         {
             mode = "hard";
             bestMove = findBestMove(p);
-            p[bestMove.row][bestMove.col] = player;
+            p[bestMove.row][bestMove.col] = Bot;
             num_p[bestMove.row][bestMove.col] = ' ';
             mode = "med";
             med_switch = "easy";
@@ -280,7 +280,7 @@ void Base::bot_execute()
         {
             mode = "easy";
             bestMove = findBestMove(p);
-            p[bestMove.row][bestMove.col] = player;
+            p[bestMove.row][bestMove.col] = Bot;
             num_p[bestMove.row][bestMove.col] = ' ';
             mode = "med";
             med_switch = "hard";
@@ -289,7 +289,7 @@ void Base::bot_execute()
     else
     {
         bestMove = findBestMove(p);
-        p[bestMove.row][bestMove.col] = player;
+        p[bestMove.row][bestMove.col] = Bot;
         num_p[bestMove.row][bestMove.col] = ' ';
         // cout << mode;
     }
@@ -304,7 +304,7 @@ void Base::bot_execute()
 
 void Base::lead_road(char turn)
 {
-    if (turn == player)
+    if (turn == Bot)
     {
         bot_execute();
     }
@@ -318,7 +318,7 @@ void Base::set_winner(char result)
 {
     printf("\033[33m");
 
-    if (result == player)
+    if (result == Bot)
     {
         system("clear");
         cout << "\n        you lose !!!\n\n\t\tBot won the match\n\n";
@@ -392,7 +392,7 @@ void Base::start_game()
 
     if (ask == 'b')
     {
-        lead_road(player);
+        lead_road(Bot);
     }
     else
     {
