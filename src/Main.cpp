@@ -182,15 +182,15 @@ void Base::getPosition()
         try
         {
             pos = stoi(ask); // try to convert string to integer
+
+            if (pos < 1 || pos > 9)
+            {
+                throw out_of_range("Integer value out of range"); // throw out_of_range exception if num is out of range
+            }
         }
         catch (const std::exception &e)
         {
             cout << "invalid input";
-            continue;
-        }
-
-        if (pos < 1 || pos > 9)
-        {
             continue;
         }
 
