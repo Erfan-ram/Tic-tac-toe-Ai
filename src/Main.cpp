@@ -190,7 +190,7 @@ void Base::getPosition()
         }
         catch (const std::exception &e)
         {
-            cout << "invalid input";
+            cout << "invalid input" << e.what();
             continue;
         }
 
