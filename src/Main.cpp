@@ -1,5 +1,6 @@
 #include "Main.h"
 #include "Ai_module.h"
+#include <string.h>
 
 Move bestMove;
 win_pos position1;
@@ -170,22 +171,32 @@ void Base::checkWinner()
 
 void Base::getPosition()
 {
+    string ask;
     int pos;
 
     // check if chosen number is empty and to prevent overwrite
     while (1)
     {
         cout << "Plese enter number where do you want to  :  ";
-        cin >> pos;
-
-        if (isMovesSame(p, pos) == true)
+        cin >> ask;
+        try
         {
-            cout << "It was choosen before \n\n";
+            pos = stoi(ask); // try to convert string to integer
+        }
+        catch (const std::exception &e)
+        {
+            cout << "invalid input";
             continue;
         }
 
         if (pos < 1 || pos > 9)
         {
+            continue;
+        }
+
+        if (isMovesSame(p, pos) == true)
+        {
+            cout << "It was choosen before \n\n";
             continue;
         }
 
