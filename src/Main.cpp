@@ -1,6 +1,5 @@
 #include "Main.h"
 #include "Ai_module.h"
-#include <string.h>
 
 Move bestMove;
 win_pos position1;
