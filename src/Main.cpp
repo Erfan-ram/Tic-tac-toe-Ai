@@ -187,16 +187,14 @@ void Base::getPosition()
             {
                 throw out_of_range("Integer value out of range"); // throw out_of_range exception if num is out of range
             }
+            if (isMovesSame(p, pos))
+            {
+                throw invalid_argument("It was choosen before ");
+            }
         }
-        catch (const std::exception &e)
+        catch (const exception &e)
         {
-            cout << "invalid input" << e.what();
-            continue;
-        }
-
-        if (isMovesSame(p, pos) == true)
-        {
-            cout << "It was choosen before \n\n";
+            cout << "invalid input ." << e.what() << endl;
             continue;
         }
 
