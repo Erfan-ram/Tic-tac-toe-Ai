@@ -12,7 +12,6 @@ using namespace std;
 class Base
 {
 private:
-    bool able_to_exit = false;
     string med_switch = "easy";
 
     // save players choices to prevent edit chosen field

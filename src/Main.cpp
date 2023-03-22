@@ -198,10 +198,7 @@ void Base::getPosition()
             continue;
         }
 
-        able_to_exit = true;
-
-        if (able_to_exit == true)
-            break;
+        break;
     }
 
     // assign chosen number and symbol to right index
@@ -458,7 +455,6 @@ void Base::reset_game()
     {
         printf("\033[33m");
         system("clear");
-        able_to_exit = false;
         isFinished = false;
 
         for (int i = 0; i < 3; i++)
