@@ -7,6 +7,12 @@
 
 using namespace std;
 
+struct Players
+{
+    const char Bot = 'x';
+    const char opponent = 'o';
+};
+
 // main class contain execute - set turn - check winner and ....
 // just create an object and run start_game() -all you need to change is on execute functions
 class Base
@@ -43,7 +49,7 @@ public:
 
     int getPosition();
 
-    void takeAction(int position);
+    void takeAction(Players playerType, int position);
 
     // ordered functions by importance
     void playerExecution();

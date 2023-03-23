@@ -18,11 +18,7 @@ struct win_pos
 {
 	int row, col;
 };
-struct Players
-{
-	const char Bot = 'x';
-	const char opponent = 'o';
-};
+
 int player_won[] = {0, 0};
 
 Players symbol;
