@@ -41,7 +41,9 @@ public:
     // check all possible win positions using for loop for coulm and row
     void checkWinner();
 
-    void getPosition();
+    int getPosition();
+
+    void takeAction(int position = -1, int row = -1, int columns = -1);
 
     // ordered functions by importance
     void playerExecution();

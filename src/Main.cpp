@@ -168,7 +168,7 @@ void Base::checkWinner()
     }
 }
 
-void Base::getPosition()
+int Base::getPosition()
 {
     string ask;
     int pos;
@@ -197,61 +197,71 @@ void Base::getPosition()
             continue;
         }
 
-        break;
+        return pos;
     }
-
+}
+void Base::takeAction(int position = -1, int row = -1, int columns = -1)
+{
     // assign chosen number and symbol to right index
-    switch (pos)
+
+    if (position == 1)
     {
-    case 7:
         p[0][0] = opponent;
         num_p[0][0] = ' ';
-        break;
+    }
 
-    case 8:
+    if (position == 1)
+    {
         p[0][1] = opponent;
         num_p[0][1] = ' ';
-        break;
+    }
 
-    case 9:
+    if (position == 1)
+    {
         p[0][2] = opponent;
         num_p[0][2] = ' ';
-        break;
+    }
 
-    case 4:
+    if (position == 1)
+    {
         p[1][0] = opponent;
         num_p[1][0] = ' ';
-        break;
+    }
 
-    case 5:
+    if (position == 1)
+    {
         p[1][1] = opponent;
         num_p[1][1] = ' ';
-        break;
+    }
 
-    case 6:
+    if (position == 1)
+    {
         p[1][2] = opponent;
         num_p[1][2] = ' ';
-        break;
+    }
 
-    case 1:
+    if (position == 1)
+    {
         p[2][0] = opponent;
         num_p[2][0] = ' ';
-        break;
+    }
 
-    case 2:
+    if (position == 1)
+    {
         p[2][1] = opponent;
         num_p[2][1] = ' ';
-        break;
+    }
 
-    case 3:
+    if (position == 1)
+    {
         p[2][2] = opponent;
         num_p[2][2] = ' ';
-        break;
-
-    default:
-        cout << "\nNumber invalid !!\n\n";
-        break;
     }
+
+default:
+    cout << "\nNumber invalid !!\n\n";
+    break;
+}
 }
 
 void Base::playerExecution()
