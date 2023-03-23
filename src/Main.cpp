@@ -55,17 +55,16 @@ void Base::showUi(bool playerTurn = false)
     printf("            |     |                   |     |             \n\n\n");
     if (playerTurn)
     {
-        cout << "\033[103m"
-             << "\033[41m"
-             << "You :" << showTurn("pl") << "\tBot :" << showTurn("op") << endl
-             << "\033[0m"
-             << "\033[31m";
+        printf("\033[0m");
+        printf("     \033[41m You : %c \033[0m      \033[41m Bot :%c ", showTurn("pl"), showTurn("op"));
+        printf("\033[0m");
+        printf("\033[31m\n");
     }
 
     if (isFinished == true)
     {
         printf("\033[0m Final resault: ");
-        printf("     \033[33;44m symbol.Bot :%i \033[0m    vs    \033[33;44m You :%i ", player_won[0], player_won[1]);
+        printf("     \033[33;44m Bot :%i \033[0m    vs    \033[33;44m You :%i ", player_won[0], player_won[1]);
         printf("\033[0m");
         // printf("\033[33m");
     }
@@ -449,7 +448,7 @@ void Base::reset_game()
 
     if (play_aagain)
     {
-        printf("\033[33m");
+        // printf("\033[33m");
         system("clear");
         isFinished = false;
 
