@@ -65,7 +65,7 @@ void Base::showUi(bool playerTurn = false)
     if (isFinished == true)
     {
         printf("\033[0m Final resault: ");
-        printf("     \033[33;44m Bot :%i \033[0m    vs    \033[33;44m You :%i ", player_won[0], player_won[1]);
+        printf("     \033[33;44m symbol.Bot :%i \033[0m    vs    \033[33;44m You :%i ", player_won[0], player_won[1]);
         printf("\033[0m");
         // printf("\033[33m");
     }
@@ -73,9 +73,9 @@ void Base::showUi(bool playerTurn = false)
 char Base::showTurn(const string st)
 {
     if (st == "pl")
-        return opponent;
+        return symbol.opponent;
 
-    return Bot;
+    return symbol.Bot;
 }
 
 void Base::checkWinner()
@@ -206,47 +206,47 @@ void Base::takeAction(int position = -1, int row = -1, int columns = -1)
 
     if (position == 7)
     {
-        p[0][0] = opponent;
+        p[0][0] = symbol.opponent;
         num_p[0][0] = ' ';
     }
     else if (position == 8)
     {
-        p[0][1] = opponent;
+        p[0][1] = symbol.opponent;
         num_p[0][1] = ' ';
     }
     else if (position == 9)
     {
-        p[0][2] = opponent;
+        p[0][2] = symbol.opponent;
         num_p[0][2] = ' ';
     }
     else if (position == 4)
     {
-        p[1][0] = opponent;
+        p[1][0] = symbol.opponent;
         num_p[1][0] = ' ';
     }
     else if (position == 5)
     {
-        p[1][1] = opponent;
+        p[1][1] = symbol.opponent;
         num_p[1][1] = ' ';
     }
     else if (position == 6)
     {
-        p[1][2] = opponent;
+        p[1][2] = symbol.opponent;
         num_p[1][2] = ' ';
     }
     else if (position == 1)
     {
-        p[2][0] = opponent;
+        p[2][0] = symbol.opponent;
         num_p[2][0] = ' ';
     }
     else if (position == 2)
     {
-        p[2][1] = opponent;
+        p[2][1] = symbol.opponent;
         num_p[2][1] = ' ';
     }
     else if (position == 3)
     {
-        p[2][2] = opponent;
+        p[2][2] = symbol.opponent;
         num_p[2][2] = ' ';
     }
 }
@@ -262,7 +262,7 @@ void Base::playerExecution()
 
     if (isFinished == false)
     {
-        lead_road(Bot);
+        lead_road(symbol.Bot);
     }
 }
 
@@ -277,7 +277,7 @@ void Base::bot_execute()
         {
             mode = "hard";
             bestMove = findBestMove(p);
-            p[bestMove.row][bestMove.col] = Bot;
+            p[bestMove.row][bestMove.col] = symbol.Bot;
             num_p[bestMove.row][bestMove.col] = ' ';
             mode = "med";
             med_switch = "easy";
@@ -286,7 +286,7 @@ void Base::bot_execute()
         {
             mode = "easy";
             bestMove = findBestMove(p);
-            p[bestMove.row][bestMove.col] = Bot;
+            p[bestMove.row][bestMove.col] = symbol.Bot;
             num_p[bestMove.row][bestMove.col] = ' ';
             mode = "med";
             med_switch = "hard";
@@ -295,7 +295,7 @@ void Base::bot_execute()
     else
     {
         bestMove = findBestMove(p);
-        p[bestMove.row][bestMove.col] = Bot;
+        p[bestMove.row][bestMove.col] = symbol.Bot;
         num_p[bestMove.row][bestMove.col] = ' ';
         // cout << mode;
     }
@@ -304,13 +304,13 @@ void Base::bot_execute()
 
     if (isFinished == false)
     {
-        lead_road(opponent);
+        lead_road(symbol.opponent);
     }
 }
 
 void Base::lead_road(char turn)
 {
-    if (turn == Bot)
+    if (turn == symbol.Bot)
     {
         bot_execute();
     }
@@ -324,7 +324,7 @@ void Base::set_winner(char result)
 {
     printf("\033[33m");
 
-    if (result == Bot)
+    if (result == symbol.Bot)
     {
         system("clear");
         cout << "\n        you lose !!!\n\n\t\tBot won the match\n\n";
@@ -333,7 +333,7 @@ void Base::set_winner(char result)
         showUi();
         reset_game();
     }
-    else if (result == opponent)
+    else if (result == symbol.opponent)
     {
         system("clear");
         cout << "\n        congratulations !!!\n\n\t\t you won the match\n\n";
@@ -376,7 +376,7 @@ void Base::start_game()
     printf("\033[31m");
 
     cout << "which would start first ?\n\t";
-    cout << "enter b for bot | any character for you to start the game :  ";
+    cout << "enter b for symbol.Bot | any character for you to start the game :  ";
     cin >> ask;
 
     cout << "\n\nok and which mode ?\n\t";
@@ -398,11 +398,11 @@ void Base::start_game()
 
     if (ask == 'b')
     {
-        lead_road(Bot);
+        lead_road(symbol.Bot);
     }
     else
     {
-        lead_road(opponent);
+        lead_road(symbol.opponent);
     }
 }
 
