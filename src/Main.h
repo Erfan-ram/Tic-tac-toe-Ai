@@ -43,7 +43,7 @@ public:
 
     int getPosition();
 
-    void takeAction(int position = -1, int row = -1, int columns = -1);
+    void takeAction(int position);
 
     // ordered functions by importance
     void playerExecution();

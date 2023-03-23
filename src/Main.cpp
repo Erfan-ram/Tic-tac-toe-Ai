@@ -200,7 +200,7 @@ int Base::getPosition()
         return pos;
     }
 }
-void Base::takeAction(int position = -1, int row = -1, int columns = -1)
+void Base::takeAction(int position)
 {
     // assign chosen number and symbol to right index
 
@@ -256,7 +256,7 @@ void Base::playerExecution()
     // clear text
     system("clear");
     showUi(true);
-    getPosition();
+    takeAction(getPosition());
 
     checkWinner();
 
