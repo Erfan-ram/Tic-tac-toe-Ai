@@ -61,12 +61,11 @@ void Base::showUi(bool playerTurn = false)
         printf("\033[31m\n");
     }
 
-    if (isFinished == true)
+    if (isFinished)
     {
         printf("\033[0m Final resault: ");
         printf("     \033[33;44m Bot :%i \033[0m    vs    \033[33;44m You :%i ", player_won[0], player_won[1]);
         printf("\033[0m");
-        // printf("\033[33m");
     }
 }
 char Base::showTurn(const string st)
@@ -296,7 +295,6 @@ void Base::bot_execute()
         bestMove = findBestMove(p);
         p[bestMove.row][bestMove.col] = symbol.Bot;
         num_p[bestMove.row][bestMove.col] = ' ';
-        // cout << mode;
     }
     // check if games end or not
     checkWinner();
@@ -375,7 +373,7 @@ void Base::start_game()
     printf("\033[31m");
 
     cout << "which would start first ?\n\t";
-    cout << "enter b for symbol.Bot | any character for you to start the game :  ";
+    cout << "enter b for Bot | any character for you to start the game :  ";
     cin >> ask;
 
     cout << "\n\nok and which mode ?\n\t";
@@ -408,7 +406,6 @@ void Base::start_game()
 void Base::reset_game()
 {
     string ask_again = "default";
-    bool can_exit = false;
     bool play_aagain = false;
     int k = 0;
     char numss[] = "789456123";
@@ -422,33 +419,30 @@ void Base::reset_game()
 
             if (ask_again == "yes" || ask_again == "y")
             {
-                can_exit = true;
                 play_aagain = true;
             }
             else if (ask_again == "no" || ask_again == "n")
             {
-                can_exit = true;
+                cout << "Good luck";
+                exit(0);
             }
             else
             {
-                throw "eror";
+                throw invalid_argument("invalid entry !!!");
             }
         }
-        catch (...)
+        catch (const exception &er)
         {
-            cout << "invalid entry !!!";
+            cout << er.what();
+            continue;
         }
 
-        if (can_exit == true)
-        {
-            break;
-        }
+        break;
     }
-    // if yes reset list and array and call start_game() to start the game
 
+    // if yes reset list and array and call start_game() to start the game
     if (play_aagain)
     {
-        // printf("\033[33m");
         system("clear");
         isFinished = false;
 
