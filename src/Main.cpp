@@ -204,64 +204,51 @@ void Base::takeAction(int position = -1, int row = -1, int columns = -1)
 {
     // assign chosen number and symbol to right index
 
-    if (position == 1)
+    if (position == 7)
     {
         p[0][0] = opponent;
         num_p[0][0] = ' ';
     }
-
-    if (position == 1)
+    else if (position == 8)
     {
         p[0][1] = opponent;
         num_p[0][1] = ' ';
     }
-
-    if (position == 1)
+    else if (position == 9)
     {
         p[0][2] = opponent;
         num_p[0][2] = ' ';
     }
-
-    if (position == 1)
+    else if (position == 4)
     {
         p[1][0] = opponent;
         num_p[1][0] = ' ';
     }
-
-    if (position == 1)
+    else if (position == 5)
     {
         p[1][1] = opponent;
         num_p[1][1] = ' ';
     }
-
-    if (position == 1)
+    else if (position == 6)
     {
         p[1][2] = opponent;
         num_p[1][2] = ' ';
     }
-
-    if (position == 1)
+    else if (position == 1)
     {
         p[2][0] = opponent;
         num_p[2][0] = ' ';
     }
-
-    if (position == 1)
+    else if (position == 2)
     {
         p[2][1] = opponent;
         num_p[2][1] = ' ';
     }
-
-    if (position == 1)
+    else if (position == 3)
     {
         p[2][2] = opponent;
         num_p[2][2] = ' ';
     }
-
-default:
-    cout << "\nNumber invalid !!\n\n";
-    break;
-}
 }
 
 void Base::playerExecution()
