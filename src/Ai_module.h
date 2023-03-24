@@ -36,6 +36,7 @@ bool isMovesLeft(char board[3][3])
 	return false;
 }
 
+// return array format of the number
 char translateBoard(char board[3][3], int number)
 {
 	if (number == 7)

@@ -42,13 +42,16 @@ public:
     // show game match and available choices
     void showUi(bool);
 
+    // return symbol of player turn
     char showTurn(const string st);
 
     // check all possible win positions using for loop for coulm and row
     void checkWinner();
 
+    // get the player choice index
     int getPosition();
 
+    // sumbit symbol to the right position
     void takeAction(Players playerType, int position);
 
     // ordered functions by importance
