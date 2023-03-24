@@ -93,6 +93,36 @@ bool isMovesSame(char board[3][3], int chose_index)
 	return false;
 }
 
+char translate_board(char board[3][3], int number)
+{
+	if (number == 7)
+		return board[0][0];
+
+	else if (number == 8)
+		return board[0][1];
+
+	else if (number == 9)
+		return board[0][2];
+
+	else if (number == 4)
+		return board[1][0];
+
+	else if (number == 5)
+		return board[1][1];
+
+	else if (number == 6)
+		return board[1][2];
+
+	else if (number == 1)
+		return board[2][0];
+
+	else if (number == 2)
+		return board[2][1];
+
+	else if (number == 3)
+		return board[2][2];
+}
+
 // This is the evaluation function as discussed
 int evaluate(char b[3][3])
 {
