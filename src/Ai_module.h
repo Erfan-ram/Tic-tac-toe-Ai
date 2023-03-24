@@ -36,64 +36,7 @@ bool isMovesLeft(char board[3][3])
 	return false;
 }
 
-bool isMovesSame(char board[3][3], int chose_index)
-{
-
-	switch (chose_index)
-	{
-	case 7:
-		if (board[0][0] != '_')
-			return true;
-		break;
-
-	case 8:
-		if (board[0][1] != '_')
-			return true;
-		break;
-
-	case 9:
-		if (board[0][2] != '_')
-			return true;
-		break;
-
-	case 4:
-		if (board[1][0] != '_')
-			return true;
-		break;
-
-	case 5:
-		if (board[1][1] != '_')
-			return true;
-		break;
-
-	case 6:
-		if (board[1][2] != '_')
-			return true;
-		break;
-
-	case 1:
-		if (board[2][0] != '_')
-			return true;
-		break;
-
-	case 2:
-		if (board[2][1] != '_')
-			return true;
-		break;
-
-	case 3:
-		if (board[2][2] != '_')
-			return true;
-		break;
-
-	default:
-		cout << "\nNumber invalid !!\n\n";
-		break;
-	}
-	return false;
-}
-
-char translate_board(char board[3][3], int number)
+char translateBoard(char board[3][3], int number)
 {
 	if (number == 7)
 		return board[0][0];
@@ -119,8 +62,43 @@ char translate_board(char board[3][3], int number)
 	else if (number == 2)
 		return board[2][1];
 
-	else if (number == 3)
+	else /*if (number == 2)*/
 		return board[2][2];
+}
+bool isMovesSame(char board[3][3], int chose_index)
+{
+
+	if (translateBoard(board, chose_index) != '_')
+		return true;
+
+	else if (translateBoard(board, chose_index) != '_')
+		return true;
+
+	else if (translateBoard(board, chose_index) != '_')
+		return true;
+
+	else if (translateBoard(board, chose_index) != '_')
+		return true;
+
+	else if (translateBoard(board, chose_index) != '_')
+		return true;
+
+	else if (translateBoard(board, chose_index) != '_')
+		return true;
+
+	else if (translateBoard(board, chose_index) != '_')
+		return true;
+
+	else if (translateBoard(board, chose_index) != '_')
+		return true;
+
+	else if (translateBoard(board, chose_index) != '_')
+		return true;
+		
+	else
+	{
+		return false;
+	}
 }
 
 // This is the evaluation function as discussed
