@@ -65,9 +65,9 @@ char translateBoard(char board[3][3], int number)
 	else /*if (number == 2)*/
 		return board[2][2];
 }
+
 bool isMovesSame(char board[3][3], int chose_index)
 {
-
 	if (translateBoard(board, chose_index) != '_')
 		return true;
 
@@ -94,11 +94,9 @@ bool isMovesSame(char board[3][3], int chose_index)
 
 	else if (translateBoard(board, chose_index) != '_')
 		return true;
-		
-	else
-	{
-		return false;
-	}
+
+	// if choosen index not filled with x nor o
+	return false;
 }
 
 // This is the evaluation function as discussed
