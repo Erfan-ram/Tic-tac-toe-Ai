@@ -71,31 +71,7 @@ bool isMovesSame(char board[3][3], int chose_index)
 {
 	if (*translateBoard(board, chose_index) != '_')
 		return true;
-
-	else if (*translateBoard(board, chose_index) != '_')
-		return true;
-
-	else if (*translateBoard(board, chose_index) != '_')
-		return true;
-
-	else if (*translateBoard(board, chose_index) != '_')
-		return true;
-
-	else if (*translateBoard(board, chose_index) != '_')
-		return true;
-
-	else if (*translateBoard(board, chose_index) != '_')
-		return true;
-
-	else if (*translateBoard(board, chose_index) != '_')
-		return true;
-
-	else if (*translateBoard(board, chose_index) != '_')
-		return true;
-
-	else if (*translateBoard(board, chose_index) != '_')
-		return true;
-
+		
 	// if choosen index not filled with x nor o
 	return false;
 }
