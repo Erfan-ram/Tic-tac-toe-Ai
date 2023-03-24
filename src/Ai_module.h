@@ -67,13 +67,14 @@ char *translateBoard(char board[3][3], int number)
 		return &board[2][2];
 }
 
-bool isMovesSame(char board[3][3], int chose_index)
+bool isIndexFull(char board[3][3], int chose_index)
 {
-	if (*translateBoard(board, chose_index) != '_')
-		return true;
-		
-	// if choosen index not filled with x nor o
-	return false;
+	// if choosen index empty
+	if (*translateBoard(board, chose_index) == '_')
+		return false;
+
+	// if choosen index filled with x nor o
+	return true;
 }
 
 // This is the evaluation function as discussed

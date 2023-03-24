@@ -184,7 +184,7 @@ int Base::getPosition()
             {
                 throw out_of_range("Integer value out of range"); // throw out_of_range exception if num is out of range
             }
-            if (isMovesSame(p, pos))
+            if (isIndexFull(p, pos))
             {
                 throw invalid_argument("It was choosen before ");
             }
