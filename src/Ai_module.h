@@ -37,63 +37,63 @@ bool isMovesLeft(char board[3][3])
 }
 
 // return array format of the number
-char translateBoard(char board[3][3], int number)
+char *translateBoard(char board[3][3], int number)
 {
 	if (number == 7)
-		return board[0][0];
+		return &board[0][0];
 
 	else if (number == 8)
-		return board[0][1];
+		return &board[0][1];
 
 	else if (number == 9)
-		return board[0][2];
+		return &board[0][2];
 
 	else if (number == 4)
-		return board[1][0];
+		return &board[1][0];
 
 	else if (number == 5)
-		return board[1][1];
+		return &board[1][1];
 
 	else if (number == 6)
-		return board[1][2];
+		return &board[1][2];
 
 	else if (number == 1)
-		return board[2][0];
+		return &board[2][0];
 
 	else if (number == 2)
-		return board[2][1];
+		return &board[2][1];
 
 	else /*if (number == 2)*/
-		return board[2][2];
+		return &board[2][2];
 }
 
 bool isMovesSame(char board[3][3], int chose_index)
 {
-	if (translateBoard(board, chose_index) != '_')
+	if (*translateBoard(board, chose_index) != '_')
 		return true;
 
-	else if (translateBoard(board, chose_index) != '_')
+	else if (*translateBoard(board, chose_index) != '_')
 		return true;
 
-	else if (translateBoard(board, chose_index) != '_')
+	else if (*translateBoard(board, chose_index) != '_')
 		return true;
 
-	else if (translateBoard(board, chose_index) != '_')
+	else if (*translateBoard(board, chose_index) != '_')
 		return true;
 
-	else if (translateBoard(board, chose_index) != '_')
+	else if (*translateBoard(board, chose_index) != '_')
 		return true;
 
-	else if (translateBoard(board, chose_index) != '_')
+	else if (*translateBoard(board, chose_index) != '_')
 		return true;
 
-	else if (translateBoard(board, chose_index) != '_')
+	else if (*translateBoard(board, chose_index) != '_')
 		return true;
 
-	else if (translateBoard(board, chose_index) != '_')
+	else if (*translateBoard(board, chose_index) != '_')
 		return true;
 
-	else if (translateBoard(board, chose_index) != '_')
+	else if (*translateBoard(board, chose_index) != '_')
 		return true;
 
 	// if choosen index not filled with x nor o
