@@ -31,9 +31,9 @@ private:
 
     // index field valeu for showing available choices
     char num_p[3][3] = {
-        {'7', '8', '9'},
+        {'1', '2', '3'},
         {'4', '5', '6'},
-        {'1', '2', '3'}};
+        {'7', '8', '9'}};
 
 public:
     // constructor to set name,turn

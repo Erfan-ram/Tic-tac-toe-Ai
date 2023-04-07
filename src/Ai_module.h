@@ -26,13 +26,13 @@ Players symbol;
 // return array format of the number
 char *translateBoard(char board[3][3], int number)
 {
-	if (number == 7)
+	if (number == 1)
 		return &board[0][0];
 
-	else if (number == 8)
+	else if (number == 2)
 		return &board[0][1];
 
-	else if (number == 9)
+	else if (number == 3)
 		return &board[0][2];
 
 	else if (number == 4)
@@ -44,13 +44,13 @@ char *translateBoard(char board[3][3], int number)
 	else if (number == 6)
 		return &board[1][2];
 
-	else if (number == 1)
+	else if (number == 7)
 		return &board[2][0];
 
-	else if (number == 2)
+	else if (number == 8)
 		return &board[2][1];
 
-	else /*if (number == 2)*/
+	else /*if (number == 9)*/
 		return &board[2][2];
 }
 

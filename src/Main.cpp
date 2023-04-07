@@ -19,10 +19,10 @@ void Base::showUi(bool playerTurn = false)
     char UIchoose[size];
 
     // assign values to each element using a for loop
-    for (int i = 0; i < 9; i++)
+    for (int i = 1; i < 10; i++)
     {
-        Uib[i] = *translateBoard(p, i);
-        UIchoose[i] = *translateBoard(num_p, i);
+        Uib[i - 1] = *translateBoard(p, i);
+        UIchoose[i - 1] = *translateBoard(num_p, i);
     }
 
     // char a = p[0][0];
