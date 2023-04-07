@@ -23,18 +23,6 @@ int player_won[] = {0, 0};
 
 Players symbol;
 
-// This function returns true if there are moves
-// remaining on the board. It returns false if
-// there are no moves left to play.
-
-bool isMovesLeft(char board[3][3])
-{
-	for (int i = 0; i < 9; i++)
-		if (*translateBoard(board, i) == '_')
-			return true;
-	return false;
-}
-
 // return array format of the number
 char *translateBoard(char board[3][3], int number)
 {
@@ -64,6 +52,17 @@ char *translateBoard(char board[3][3], int number)
 
 	else /*if (number == 2)*/
 		return &board[2][2];
+}
+
+// This function returns true if there are moves
+// remaining on the board. It returns false if
+// there are no moves left to play.
+bool isMovesLeft(char board[3][3])
+{
+	for (int i = 0; i < 9; i++)
+		if (*translateBoard(board, i) == '_')
+			return true;
+	return false;
 }
 
 bool isIndexFull(char board[3][3], int chose_index)
