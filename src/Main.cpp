@@ -25,27 +25,6 @@ void Base::showUi(bool playerTurn = false)
         UIchoose[i - 1] = *translateBoard(num_p, i);
     }
 
-    // char a = p[0][0];
-    // char b = p[0][1];
-    // char c = p[0][2];
-    // char d = p[1][0];
-    // char e = p[1][1];
-    // char f = p[1][2];
-    // char g = p[2][0];
-    // char h = p[2][1];
-    // char i = p[2][2];
-
-    // // convert available choices to a varble to call them easier
-    // char j = num_p[0][0];
-    // char k = num_p[0][1];
-    // char l = num_p[0][2];
-    // char m = num_p[1][0];
-    // char n = num_p[1][1];
-    // char o = num_p[1][2];
-    // char p = num_p[2][0];
-    // char q = num_p[2][1];
-    // char r = num_p[2][2];
-
     // show them via using format string in c++
     cout << endl;
     if (isFinished == true)
@@ -373,8 +352,7 @@ void Base::reset_game()
 {
     string ask_again = "default";
     bool play_aagain = false;
-    int k = 0;
-    char numss[] = "789456123";
+    int k = 1;
 
     while (1)
     {
@@ -412,16 +390,22 @@ void Base::reset_game()
         system("clear");
         isFinished = false;
 
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                p[i][j] = '_';
-
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
+        for (auto &row : p)
+        {
+            for (auto &elem : row)
             {
-                num_p[i][j] = numss[k];
+                elem = '_';
+            }
+        }
+
+        for (auto &row_p : num_p)
+        {
+            for (auto &elem_p : row_p)
+            {
+                elem_p = static_cast<char>(k + '0');
                 k += 1;
             }
+        }
 
         start_game();
     }
