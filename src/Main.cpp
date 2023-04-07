@@ -201,52 +201,8 @@ int Base::getPosition()
 void Base::takeAction(Players playerType, int position)
 {
     // assign chosen number and symbol to right index
-
-    if (position == 7)
-    {
-        p[0][0] = playerType.opponent;
-        num_p[0][0] = ' ';
-    }
-    else if (position == 8)
-    {
-        p[0][1] = playerType.opponent;
-        num_p[0][1] = ' ';
-    }
-    else if (position == 9)
-    {
-        p[0][2] = playerType.opponent;
-        num_p[0][2] = ' ';
-    }
-    else if (position == 4)
-    {
-        p[1][0] = playerType.opponent;
-        num_p[1][0] = ' ';
-    }
-    else if (position == 5)
-    {
-        p[1][1] = playerType.opponent;
-        num_p[1][1] = ' ';
-    }
-    else if (position == 6)
-    {
-        p[1][2] = playerType.opponent;
-        num_p[1][2] = ' ';
-    }
-    else if (position == 1)
-    {
-        p[2][0] = playerType.opponent;
-        num_p[2][0] = ' ';
-    }
-    else if (position == 2)
-    {
-        p[2][1] = playerType.opponent;
-        num_p[2][1] = ' ';
-    }
-    else if (position == 3)
-    {
-        p[2][2] = playerType.opponent;
-        num_p[2][2] = ' ';
-    }
+    *translateBoard(p, position) = playerType.opponent;
+    *translateBoard(num_p, position) = ' ';
 }
 
 void Base::playerExecution()
